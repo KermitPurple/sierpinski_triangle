@@ -10,8 +10,12 @@ class Triangle:
         xdist = abs(self.points[0][0] - self.points[1][0])
         ydist = abs(self.points[0][1] - self.points[1][1])
         if (xdist + ydist) / 2 > 1:
-            new_points = [0,0,0]
-            new_points[0] = (int((self.points[0][0] + self.points[1][0]) / 2), int((self.points[0][1] + self.points[1][1]) / 2))
-            new_points[1] = (int((self.points[1][0] + self.points[2][0]) / 2), int((self.points[1][1] + self.points[2][1]) / 2))
-            new_points[2] = (int((self.points[2][0] + self.points[0][0]) / 2), int((self.points[2][1] + self.points[0][1]) / 2))
-            Triangle(self.screen, new_points).draw()
+            new_points = []
+            for i in range(3):
+                new_points.append(
+                        (self.points[i],
+                        ((self.points[i][0] + self.points[(i + 1) % 3][0])/2,(self.points[i][1] + self.points[(i + 1) % 3][1])/2),
+                        ((self.points[i][0] + self.points[(i + 2) % 3][0])/2,(self.points[i][1] + self.points[(i + 2) % 3][1])/2),
+                        ))
+            for points in new_points:
+                Triangle(self.screen, points).draw()
