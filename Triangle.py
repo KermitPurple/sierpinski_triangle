@@ -9,7 +9,7 @@ class Triangle:
         pygame.draw.polygon(self.screen, (255,255,255), self.points, 1)
         xdist = abs(self.points[0][0] - self.points[1][0])
         ydist = abs(self.points[0][1] - self.points[1][1])
-        if (xdist + ydist) / 2 > 1:
+        if (xdist + ydist) / 2 > 2:
             new_points = []
             for i in range(3):
                 new_points.append(
